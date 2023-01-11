@@ -17,6 +17,10 @@ class CreateMovimientosTable extends Migration
             $table->id('idmovimiento');
             $table->date('fecha');
             $table->time('hora');
+            $table->unsignedBigInteger('oforigen_id');
+            $table->foreign('oforigen_id')->references('idoficina')->on('oficinas');
+            $table->unsignedBigInteger('ofdestino_id');
+            $table->foreign('ofdestino_id')->references('idoficina')->on('oficinas');
             $table->timestamps();
         });
     }

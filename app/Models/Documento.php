@@ -11,7 +11,10 @@ class Documento extends Model
     public function cliente(){
         return $this->belongsTo(Cliente::class);
     }
-    public function movimiento(){
+    public function movimientos(){
         return $this->hasMany(Movimiento::class);
+    }
+    public function tdocumentos(){
+        return $this->belongsTo(Tdocumento::class);
     }
 }

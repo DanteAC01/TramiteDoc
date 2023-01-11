@@ -15,8 +15,8 @@ class ClienteController extends Controller
      */
     public function index()
     {
-        $cliente = cliente::all();
-        return View('Documentos.clientes.index', compact('cliente'));
+        $clientes = Cliente::all();
+        return View('Documentos.clientes.index', compact('clientes'));
     }
 
 /*     public function index()
@@ -34,7 +34,7 @@ class ClienteController extends Controller
      */
     public function create()
     {
-        $cliente = new cliente; //initialize empty cliente object
+        $cliente = new Cliente;
         return view('Documentos.clientes.create', compact('cliente'));
     }
 
@@ -77,6 +77,9 @@ class ClienteController extends Controller
     public function edit($id)
     {
         //
+        $cliente = Cliente::findOrfail($id);
+
+        return view('Documentos.clientes.edit', compact('cliente'));
     }
 
     /**
@@ -89,6 +92,13 @@ class ClienteController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $cliente = Cliente::findOrFail($id);
+        $cliente->nombre = $request->nombre;
+        $cliente->dniRuc =$request->dniRuc;
+        $cliente->telefono =$request->telefono;
+        $cliente->email =$request->email;
+        $cliente->update();
+        return Redirect::route('Documentos.clientes.index');
     }
 
     /**
@@ -100,5 +110,17 @@ class ClienteController extends Controller
     public function destroy($id)
     {
         //
+        try {
+            //code...
+            $cliente = Cliente::findOrFail($id);
+            $cliente->delete();
+        } catch (\Throwable $th) {
+            //throw $th;
+            return Redirect::route('Documentos.clientes.index')
+            ->with('error',$th->getMessage());
+        }
+        return Redirect::route('Documentos.clientes.index')
+        ->with('info','el item se elimino correctamente');
+
     }
 }

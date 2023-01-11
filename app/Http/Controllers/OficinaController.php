@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Oficina;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 
 class OficinaController extends Controller
 {
@@ -14,6 +16,8 @@ class OficinaController extends Controller
     public function index()
     {
         //
+        $oficinas= Oficina::all();
+        return view('Oficinas.oficinas.index', compact('oficinas'));
     }
 
     /**
@@ -24,6 +28,7 @@ class OficinaController extends Controller
     public function create()
     {
         //
+        return view('Oficinas.oficinas.create');
     }
 
     /**
@@ -35,6 +40,10 @@ class OficinaController extends Controller
     public function store(Request $request)
     {
         //
+        $oficina= new Oficina();
+        $oficina->nombre = $request->nombre;
+        $oficina->save();
+        return Redirect::route('Oficinas.oficinas.index');
     }
 
     /**
@@ -57,6 +66,8 @@ class OficinaController extends Controller
     public function edit($id)
     {
         //
+        $oficina = Oficina::findOrFaild($id);
+        return view('Oficinas.oficinas.edit', compact('oficina'));
     }
 
     /**
@@ -69,6 +80,10 @@ class OficinaController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $oficina = Oficina::findOrFaild($id);
+        $oficina->nombre;
+        $oficina->update();
+        return Redirect::route('Oficinas.oficinas.index');
     }
 
     /**
@@ -80,5 +95,8 @@ class OficinaController extends Controller
     public function destroy($id)
     {
         //
+        $oficina = Oficina::findOrFail($id);
+        $oficina->delete();
+        return Redirect::route('Oficinas.oficinas.index');
     }
 }

@@ -2,12 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Documento;
-use App\Models\Tdocumento;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 
-class TdocumentoController extends Controller
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,8 +16,8 @@ class TdocumentoController extends Controller
     public function index()
     {
         //
-        $tdocumentos = Tdocumento::all();
-        return view('Documentos.tdocumentos.index', compact('tdocumentos'));
+        $users= User::all();
+        return view('Oficinas.usuarios.index', compact('users'));
     }
 
     /**
@@ -29,7 +28,7 @@ class TdocumentoController extends Controller
     public function create()
     {
         //
-        return view('Documentos.tdocumentos.create');
+        return view('Oficinas.usuarios.create');
     }
 
     /**
@@ -41,10 +40,12 @@ class TdocumentoController extends Controller
     public function store(Request $request)
     {
         //
-        $tdocumento= new Tdocumento();
-        $tdocumento->nombre = $request->nombre;
-        $tdocumento->save();
-        return Redirect::route('Documentos.tdocumentos.index');
+        $user= new User();
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->password = $request->password;
+        $user->save();
+        return Redirect::route('Oficinas.usuarios.index');
     }
 
     /**
@@ -67,8 +68,8 @@ class TdocumentoController extends Controller
     public function edit($id)
     {
         //
-        $tdocumento = Tdocumento::findOrFaild($id);
-        return view('Documentos.tdocumentos.edit', compact('tdocumento'));
+        $user = User::findOrFaild($id);
+        return view('Oficinas.usuarios.edit', compact('user'));
     }
 
     /**
@@ -81,10 +82,12 @@ class TdocumentoController extends Controller
     public function update(Request $request, $id)
     {
         //
-        $tdocumento = Tdocumento::findOrFaild($id);
-        $tdocumento->nombre;
-        $tdocumento->update();
-        return Redirect::route('Documentos.tdocumentos.index');
+        $user = User::findOrFaild($id);
+        $user->nombre;
+        $user->email;
+        $user->password;
+        $user->update();
+        return Redirect::route('Oficinas.usuarios.index');
     }
 
     /**
@@ -96,8 +99,8 @@ class TdocumentoController extends Controller
     public function destroy($id)
     {
         //
-        $tdocumento = Tdocumento::findOrFail($id);
-        $tdocumento->delete();
-        return Redirect::route('Documentos.tdocumentos.index');
+        $user = User::findOrFail($id);
+        $user->delete();
+        return Redirect::route('Oficinas.usuarios.index');
     }
 }

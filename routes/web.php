@@ -1,5 +1,11 @@
 <?php
 
+use App\Http\Controllers\ClienteController;
+use App\Http\Controllers\DocumentoController;
+use App\Http\Controllers\MovimientoController;
+use App\Http\Controllers\OficinaController;
+use App\Http\Controllers\TdocumentoController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,17 +28,17 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 //rutas para documentos
-Route::resource('documentos/clientes', ClienteController::class)
-->names('documentos.clientes');
-Route::resource('documentos/documentos', DocumentoController::class)
-->names('documentos.documentos');
-Route::resource('documentos/movimientos', MovimientoController::class)
-->names('documentos.movimientos');
-Route::resource('tdocumentos/', TdocumentoController::class)
-->names('documentos.tdocumentos');
+Route::resource('Documentos/clientes', ClienteController::class)
+->names('Documentos.clientes');
+Route::resource('Documentos/documentos', DocumentoController::class)
+->names('Documentos.documentos');
+Route::resource('Documentos/movimientos', MovimientoController::class)
+->names('Documentos.movimientos');
+Route::resource('Tdocumentos/', TdocumentoController::class)
+->names('Documentos.tdocumentos');
 
 //rutas para oficinas
-Route::resource('oficinas/oficinas', OficinaController::class)
-->names('oficinas.oficinas');
-Route::resource('oficinas/usuarios', User::class)
-->names('oficinas.usuarios');
+Route::resource('Oficinas/oficinas', OficinaController::class)
+->names('Oficinas.oficinas');
+Route::resource('Oficinas/usuarios', UsuarioController::class)
+->names('Oficinas.usuarios');

@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Cliente;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 
 class ClienteController extends Controller
 {
@@ -13,8 +15,17 @@ class ClienteController extends Controller
      */
     public function index()
     {
-        //
+        $cliente = cliente::all();
+        return View('Documentos.clientes.index', compact('cliente'));
     }
+
+/*     public function index()
+    {
+        //
+        
+        $cliente = cliente::all();
+        return view('Documentos.clientes.index');
+    } */
 
     /**
      * Show the form for creating a new resource.
@@ -23,7 +34,8 @@ class ClienteController extends Controller
      */
     public function create()
     {
-        //
+        $cliente = new cliente; //initialize empty cliente object
+        return view('Documentos.clientes.create')->with('cliente', $cliente);
     }
 
     /**
@@ -35,6 +47,14 @@ class ClienteController extends Controller
     public function store(Request $request)
     {
         //
+        $cliente =  new Cliente();
+        $cliente->nombre = $request->nombre;
+        $cliente->dniRuc =$request->dniRuc;
+        $cliente->telefono =$request->telefono;
+        $cliente->email =$request->email;
+        $cliente->save();
+        return Redirect::route('Documentos.clientes.index');
+
     }
 
     /**

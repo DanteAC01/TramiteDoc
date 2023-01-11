@@ -14,6 +14,7 @@ class TdocumentoController extends Controller
     public function index()
     {
         //
+        return view('Documentos.tdocumentos.index');
     }
 
     /**

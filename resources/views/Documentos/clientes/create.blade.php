@@ -23,7 +23,7 @@
                     {!! Form::label(null, 'email', [null]) !!}
                     {!! Form::email('email', $cliente->email, ['class' => 'form-control']) !!}
                     {!! Form::label(null, 'telefono', [null]) !!}
-                    {!! Form::email('telefono', $cliente->telefono, ['class' => 'form-control']) !!}
+                    {!! Form::text('telefono', $cliente->telefono, ['class' => 'form-control']) !!}
                   </div>
           </div>
           <div class="card-footer">

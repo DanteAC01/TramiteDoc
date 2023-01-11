@@ -35,7 +35,7 @@ class ClienteController extends Controller
     public function create()
     {
         $cliente = new cliente; //initialize empty cliente object
-        return view('Documentos.clientes.create')->with('cliente', $cliente);
+        return view('Documentos.clientes.create', compact('cliente'));
     }
 
     /**

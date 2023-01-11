@@ -17,7 +17,6 @@
     <table class="table">
       <thead>
         <tr>
-          <th>id</th>
           <th>Nombre</th>
           <th>Identificacion</th>
           <th>Telefono</th>

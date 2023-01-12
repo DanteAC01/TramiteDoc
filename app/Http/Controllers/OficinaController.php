@@ -15,11 +15,10 @@ class OficinaController extends Controller
      */
     public function index()
     {
-        //
-        $oficinas= Oficina::all();
+        $oficinas = Oficina::all();
         return view('Oficinas.oficinas.index', compact('oficinas'));
     }
-
+    
     /**
      * Show the form for creating a new resource.
      *
@@ -27,8 +26,8 @@ class OficinaController extends Controller
      */
     public function create()
     {
-        //
-        return view('Oficinas.oficinas.create');
+        $oficina = new Oficina;
+        return view('Oficinas.oficinas.create', compact('oficina'));
     }
 
     /**
@@ -40,10 +39,11 @@ class OficinaController extends Controller
     public function store(Request $request)
     {
         //
-        $oficina= new Oficina();
+        $oficina =  new Oficina();
         $oficina->nombre = $request->nombre;
         $oficina->save();
         return Redirect::route('Oficinas.oficinas.index');
+
     }
 
     /**
@@ -66,7 +66,7 @@ class OficinaController extends Controller
     public function edit($id)
     {
         //
-        $oficina = Oficina::findOrFaild($id);
+        $oficina = Oficina::findOrfail($id);    
         return view('Oficinas.oficinas.edit', compact('oficina'));
     }
 
@@ -79,9 +79,8 @@ class OficinaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
-        $oficina = Oficina::findOrFaild($id);
-        $oficina->nombre;
+        $oficina = Oficina::findOrfail($id);
+        $oficina->nombre = $request->oficina;
         $oficina->update();
         return Redirect::route('Oficinas.oficinas.index');
     }
@@ -95,7 +94,7 @@ class OficinaController extends Controller
     public function destroy($id)
     {
         //
-        $oficina = Oficina::findOrFail($id);
+        $oficina = Oficina::findOrfail($id);
         $oficina->delete();
         return Redirect::route('Oficinas.oficinas.index');
     }

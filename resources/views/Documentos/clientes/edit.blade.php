@@ -21,12 +21,13 @@
                     {!! Form::email('email', $cliente->email, ['class' => 'form-control']) !!}
                     {!! Form::label(null, 'telefono', [null]) !!}
                     {!! Form::text('telefono', $cliente->telefono, ['class' => 'form-control']) !!}
-                  </div>
-          </div>
-          <div class="card-footer">
-            <button class="btn btn-primary" type="submit">
-                Guardar
-            </button>
+                    <div class="card-footer">
+                      <button class="btn btn-primary" type="submit">
+                          Guardar
+                      </button>
+                      </div>
+                </div>
+                {!! Form::close() !!}
             </div>
           </div>
      </div>

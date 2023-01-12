@@ -1,7 +1,4 @@
-<<<<<<< HEAD
-=======
 <!-- Modal Delete -->
->>>>>>> 1ce0678837ac1e6abaca4e75316b4945cee009bc
 {!! Form::open(['route'=>['Documentos.clientes.destroy',$cliente->id],'method'=>'delete']) !!}
 <div class="modal fade" id="modal-delete-{{ $cliente->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -16,16 +13,7 @@
           </button>
         </div>
         <div class="modal-body">
-<<<<<<< HEAD
-          Esta seguro de que desea eliminar este item del sistema, recuerda que si este items tiene asociado otros items, estos tambien seran borrados
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">
-            <i class="far fa-times-circle"></i> Cerrar
-        </button>
-          <button type="submit" class="btn btn-danger">
-            <i class="fas fa-trash-alt"></i> Eliminar
-=======
+
           ¿Esta seguro de que desea eliminar datos del cliente?
         </div>
         <div class="modal-footer">
@@ -34,7 +22,6 @@
         </button>
           <button type="submit" class="btn btn-danger">
             <i class="fas fa-trash-alt"></i> Si
->>>>>>> 1ce0678837ac1e6abaca4e75316b4945cee009bc
         </button>
         </div>
       </div>

@@ -15,18 +15,10 @@ class ClienteController extends Controller
      */
     public function index()
     {
-        $cliente = cliente::all();
-        return View('Documentos.clientes.index', compact('cliente'));
+        $clientes = cliente::all();
+        return view('Documentos.clientes.index', compact('clientes'));
     }
-
-/*     public function index()
-    {
-        //
-        
-        $cliente = cliente::all();
-        return view('Documentos.clientes.index');
-    } */
-
+    
     /**
      * Show the form for creating a new resource.
      *
@@ -34,7 +26,7 @@ class ClienteController extends Controller
      */
     public function create()
     {
-        $cliente = new cliente; //initialize empty cliente object
+        $cliente = new cliente;
         return view('Documentos.clientes.create', compact('cliente'));
     }
 
@@ -77,7 +69,8 @@ class ClienteController extends Controller
     public function edit($id)
     {
         //
-        
+        $cliente = Cliente::findOrfail($id);    
+        return view('Documentos.clientes.edit', compact('cliente'));
     }
 
     /**
@@ -89,7 +82,13 @@ class ClienteController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $cliente = Cliente::findOrfail($id);
+        $cliente->nombre = $request->nombre;
+        $cliente->dniRuc =$request->dniRuc;
+        $cliente->telefono =$request->telefono;
+        $cliente->email =$request->email;
+        $cliente->update();
+        return Redirect::route('Documentos.clientes.index');
     }
 
     /**
@@ -101,5 +100,8 @@ class ClienteController extends Controller
     public function destroy($id)
     {
         //
+        $cliente = Cliente::findOrfail($id);
+        $cliente->delete();
+        return Redirect::route('Documentos.clientes.index');
     }
 }

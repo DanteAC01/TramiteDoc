@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Cliente;
+use App\Models\Documento;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
+use League\CommonMark\Node\Block\Document;
 
 class DocumentoController extends Controller
 {
@@ -14,6 +18,8 @@ class DocumentoController extends Controller
     public function index()
     {
         //
+        $documentos= Documento::all();
+        return view('Documentos.documentos.index', compact('documentos'));
     }
 
     /**
@@ -24,6 +30,7 @@ class DocumentoController extends Controller
     public function create()
     {
         //
+        return view('Documentos.documentos.create');
     }
 
     /**
@@ -35,6 +42,14 @@ class DocumentoController extends Controller
     public function store(Request $request)
     {
         //
+        $documento= new Documento();
+        $documento->asunto = $request->asunto;
+        $documento->estado = $request->estado;
+        $documento->folio = $request->folio;
+        /* $documento->tdocumento_id = $request->tdocumento_id;
+        $documento->cliente_id = $request->cliente_id; */
+        $documento->save();
+        return Redirect::route('Documentos.documentos.index');
     }
 
     /**
@@ -57,6 +72,8 @@ class DocumentoController extends Controller
     public function edit($id)
     {
         //
+        $documento = Documento::findOrFaild($id);
+        return view('Documentos.documentos.edit', compact('documento'));
     }
 
     /**
@@ -69,6 +86,14 @@ class DocumentoController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $documento = Documento::findOrFaild($id);
+        $documento->asunto;
+        $documento->estado;
+        $documento->folio;
+        /* $documento->tdocumento_id;
+        $documento->cliente_id;*/
+        $documento->update();
+        return Redirect::route('Documentos.documentos.index');
     }
 
     /**
@@ -80,5 +105,8 @@ class DocumentoController extends Controller
     public function destroy($id)
     {
         //
+        $documento = Documento::findOrFail($id);
+        $documento->delete();
+        return Redirect::route('Documentos.documentos.index');
     }
 }

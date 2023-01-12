@@ -11,7 +11,4 @@ class Cliente extends Model
     public function documento(){
         return $this->hasMany(Documento::class);
     }
-    public function movimiento(){
-        return $this->hasMany(Movimiento::class);
-    }
 }

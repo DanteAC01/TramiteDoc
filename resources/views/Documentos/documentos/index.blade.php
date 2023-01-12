@@ -1,0 +1,41 @@
+@extends('adminlte::page')
+
+@section('title', 'Documentos')
+
+@section('content_header')
+    <h1>Documentos</h1>
+@stop
+
+@section('content')
+    <p></p>
+    <a href="{{ route('Documentos.documentos.create') }}">
+        <button>Nuevo Documento</button>
+    </a>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Asunto</th>
+                <th>Estado</th>
+                <th>Folio</th>
+                <th>Tipo</th>
+                <th>Cliente</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach ($documentos as $documento )
+            <tr>
+                <td>{{ $documento->asunto }}</td>
+                <td>{{ $documento->estado }}</td>
+                <td>{{ $documento->folio }}</td>
+                <td>{{ $documento->tdocumento_id }}</td>
+                <td>{{ $documento->cliente }}</td>
+                <td>
+                    <a href="{{ route('Documentos.documentos.edit') }}">
+                        <button>Editar</button>
+                    </a>
+                </td>
+            </tr>
+            @endforeach
+        </tbody>
+    </table>
+@stop

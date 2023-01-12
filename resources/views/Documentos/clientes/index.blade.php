@@ -23,7 +23,7 @@
           <th>E-mail</th>
         </tr>
       </thead>
-    </table>
+
     <tbody>
 @foreach ($cliente as $cliente)
   <tr>
@@ -35,6 +35,7 @@
   </tr>
 @endforeach
     </tbody>
+  </table>
   </div>
 </div>
 @endsection

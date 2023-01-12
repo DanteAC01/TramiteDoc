@@ -14,7 +14,7 @@ class CreateMovimientosTable extends Migration
     public function up()
     {
         Schema::create('movimientos', function (Blueprint $table) {
-            $table->id('idmovimiento');
+            $table->id();
             $table->date('fecha');
             $table->time('hora');
             $table->unsignedBigInteger('oforigen_id');

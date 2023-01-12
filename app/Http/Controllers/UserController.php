@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Oficina;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 
@@ -28,7 +29,9 @@ class UserController extends Controller
     public function create()
     {
         //
-        return view('Oficinas.usuarios.create');
+/*         $user = new User; */
+        $oficinas = Oficina::pluck('nombre','id')->toArray();
+        return view('Oficinas.usuarios.create', compact('oficinas'));
     }
 
     /**
@@ -44,6 +47,7 @@ class UserController extends Controller
         $user->name = $request->name;
         $user->email = $request->email;
         $user->password = $request->password;
+        $user->oficina_id = $request->oficina_id;
         $user->save();
         return Redirect::route('Oficinas.usuarios.index');
     }

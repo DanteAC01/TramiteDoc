@@ -42,6 +42,6 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
     public function oficina(){
-        return $this->belongsTo(Oficina::class);
+        return $this->belongsTo(Oficina::class,'idUser');
     }
 }

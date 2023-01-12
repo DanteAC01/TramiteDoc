@@ -30,10 +30,11 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 //rutas para documentos
 Route::resource('Documentos/clientes', ClienteController::class)
 ->names('Documentos.clientes');
-Route::resource('Documentos/tdocumentos', TdocumentoController::class)
-->names('Documentos.tdocumentos');
 Route::resource('Documentos/documentos', DocumentoController::class)
 ->names('Documentos.documentos');
+Route::resource('Documentos/tdocumentos', TdocumentoController::class)
+->names('Documentos.tdocumentos');
+
 
 
 //rutas para oficinas

@@ -18,12 +18,13 @@ class CreateDocumentosTable extends Migration
             $table->string('asunto');
             $table->string('estado');
             $table->string('folio');
-           /*  $table->unsignedBigInteger('tdocumento_id');
-            $table->foreign('tdocumento_id')->references('idtdocumentos')->on('tdocumentos'); */
-            /* $table->unsignedBigInteger('cliente_id');
-            $table->foreign('cliente_id')->references('id')->on('clientes'); */
+            $table->unsignedBigInteger('tdocumento_id');
+            $table->foreign('tdocumento_id')->references('id')->on('tdocumentos');
+            $table->unsignedBigInteger('cliente_id');
+            $table->foreign('cliente_id')->references('id')->on('clientes');
             $table->timestamps();
         });
+        
     }
 
     /**

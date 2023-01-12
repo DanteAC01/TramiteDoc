@@ -29,7 +29,8 @@ class TdocumentoController extends Controller
     public function create()
     {
         //
-        return view('Documentos.tdocumentos.create');
+        $tdocumento = new Tdocumento;
+        return view('Documentos.tdocumentos.create', compact('tdocumento'));
     }
 
     /**
@@ -67,7 +68,7 @@ class TdocumentoController extends Controller
     public function edit($id)
     {
         //
-        $tdocumento = Tdocumento::findOrFaild($id);
+        $tdocumento = Tdocumento::findOrFail($id);
         return view('Documentos.tdocumentos.edit', compact('tdocumento'));
     }
 
@@ -81,8 +82,8 @@ class TdocumentoController extends Controller
     public function update(Request $request, $id)
     {
         //
-        $tdocumento = Tdocumento::findOrFaild($id);
-        $tdocumento->nombre;
+        $tdocumento = Tdocumento::findOrFail($id);
+        $tdocumento->nombre = $request->nombre;
         $tdocumento->update();
         return Redirect::route('Documentos.tdocumentos.index');
     }

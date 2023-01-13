@@ -1,7 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\Movimiento;
+use App\Models\Documento;
+use App\Models\Oficina;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Http\Request;
 
 class MovimientoController extends Controller
@@ -14,6 +17,8 @@ class MovimientoController extends Controller
     public function index()
     {
         //
+        $movimientos = Movimiento::all();
+        return view('Movimientos.index', compact('movimientos'));
     }
 
     /**
@@ -24,6 +29,10 @@ class MovimientoController extends Controller
     public function create()
     {
         //
+        $movimiento = new Movimiento;
+        $documento  = Documento::pluck('asunto');
+        $oficina    = Oficina::pluck('nombre');
+        return view('Movimientos.create', compact('movimiento','documento','oficina'));
     }
 
     /**
@@ -35,6 +44,14 @@ class MovimientoController extends Controller
     public function store(Request $request)
     {
         //
+        $movimiento = new Movimiento;
+        $movimiento ->fecha = $request ->fecha;
+        $movimiento ->hora = $request ->hora;
+        $movimiento ->documentos_id = $request ->documentos_id;
+        $movimiento ->oforigen_id = $request ->oforigen_id;
+        $movimiento ->ofdestino_id = $request ->ofdestino_id;
+        $movimiento ->save();
+        return Redirect::route('Movimientos.index');
     }
 
     /**
@@ -57,6 +74,8 @@ class MovimientoController extends Controller
     public function edit($id)
     {
         //
+        $movimiento = Movimiento::findOrFail($id);
+        return view('Movimientos.index', compact('movimiento'));
     }
 
     /**
@@ -69,6 +88,14 @@ class MovimientoController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $movimiento = new Movimiento;
+        $movimiento ->fecha = $request ->fecha;
+        $movimiento ->hora = $request ->hora;
+        $movimiento ->documento_id = $request ->documento_id;
+        $movimiento ->oforigen_id = $request ->oforigen_id;
+        $movimiento ->ofdestino_id = $request ->ofdestino_id;
+        $movimiento ->update();
+        return Redict::route('Movimientos.index');
     }
 
     /**
@@ -80,5 +107,8 @@ class MovimientoController extends Controller
     public function destroy($id)
     {
         //
+        $movimiento = Movimiento::findOrFail($id);
+        $movimiento->delete();
+        return Redirect::route('Movimientos.index');
     }
 }

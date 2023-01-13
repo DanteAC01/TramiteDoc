@@ -43,5 +43,6 @@ Route::resource('Oficinas/oficinas', OficinaController::class)
 ->names('Oficinas.oficinas');
 Route::resource('Oficinas/usuarios', UserController::class)
 ->names('Oficinas.usuarios');
-Route::resource('Documentos/movimientos', MovimientoController::class)
-->names('Documentos.movimientos');
+//ruta para movimientos
+Route::resource('Movimientos/', MovimientoController::class)
+->names('Movimientos');

@@ -28,20 +28,22 @@
     <td>{{ $oficina->nombre }}</td>
     <td style="text-align: center; width: 160px">
       <td>
-        <a class="btn btn-danger btn-sm" data-toggle="modal" data-target="#modal-edit-{{ $oficina->id }}">
-          <i class="fas fa-trash-alt"></i>
-      </a>
-      </a>
+        <a href="{{ route('Oficinas.oficinas.edit', $oficina->id) }}">
+          <button class="btn btn-primary">
+              <i class="far fa-edit"></i> Editar
+          </button>
+        </a>
       </td>
       <td>
-        <a class="btn btn-danger btn-sm" data-toggle="modal" data-target="#modal-delete-{{ $oficina->id }}">
-          <i class="fas fa-trash-alt"></i>
+        <a data-toggle="modal" data-target="#modal-delete-{{ $oficina->id }}">
+           <button class="btn btn-danger">
+             <i class="fas fa-trash-alt"></i> Eliminar
+           </button>
         </a>
       </td>
   </tr>
-  @include('Oficinas.oficinas.edit')
   @include('Oficinas.oficinas.modal')
-
+{{--   @include('Oficinas.oficinas.edit') --}}
 @endforeach
     </tbody>
   </table>

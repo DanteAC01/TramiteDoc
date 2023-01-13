@@ -11,16 +11,13 @@
   </div>
      <div class="card-body">
           {!! Form::open(['route'=>'Oficinas.usuarios.store','method'=>'post']) !!}
-          @if (isset($user))
-          <input type="hidden" value="{{ $user->id }}" name="User_id">
-          @endif
           <div class="col-sm-6 col-md-6 col-lg-6">
             <div class="form-group">
                 {!! Form::label(null, 'name', [null]) !!}
                 {!! Form::text('name', $user->nombre, ['class' => 'form-control']) !!}
                 {!! Form::label(null, 'email', [null]) !!}
                 {!! Form::email('email', $user->email, ['class' => 'form-control']) !!}
-                {!! Form::label(null, 'oficina_id', [null]) !!}
+                {!! Form::label(null, 'oficina', [null]) !!}
                 {!! Form::select('oficina_id', $oficina, null, ['class' => 'form-control','id'=>'oficina_id']) !!}
               </div>
           </div>

@@ -11,9 +11,6 @@
   </div>
      <div class="card-body">
           {!! Form::open(['route'=>'Documentos.clientes.store','method'=>'post']) !!}
-          @if (isset($cliente))
-          <input type="hidden" value="{{ $cliente->idCliente }}" name="cliente_id">
-          @endif
           <div class="col-sm-6 col-md-6 col-lg-6">
                <div class="form-group">
                     {!! Form::label(null, 'nombre', [null]) !!}

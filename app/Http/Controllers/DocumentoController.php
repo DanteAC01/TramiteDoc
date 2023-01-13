@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Cliente;
+use App\Models\Tdocumento;
 use App\Models\Documento;
 use App\Models\Tdocumento;
 use Illuminate\Http\Request;
@@ -30,12 +31,10 @@ class DocumentoController extends Controller
     public function create()
     {
         //
-
-        $documentos = Documento::all();
-        $tdocumento = Tdocumento::pluck('nombre','id')->toArray();
-        $cliente = Cliente::pluck('nombre','id')->toArray();
-        return view('Documentos.documentos.create', compact('documentos','cliente','tdocumento'));
-
+        $documento = new Documento;
+        $cliente = Cliente::pluck('nombre','id');
+        $tdocumento = Tdocumento::pluck('nombre','id');
+        return view('Documentos.documentos.create', compact('documento','cliente','tdocumento'));
     }
 
     /**
@@ -52,7 +51,7 @@ class DocumentoController extends Controller
         $documento->asunto = $request->asunto;
         $documento->estado = $request->estado;
         $documento->folio = $request->folio;
-        $documento->tdocumento_id = $request-> tdocumento_id;
+        $documento->tdocumento_id = $request->tdocumento_id;
         $documento->cliente_id = $request->cliente_id;
         $documento->save();
     
@@ -101,10 +100,9 @@ class DocumentoController extends Controller
         $documento->asunto = $request->asunto;
         $documento->estado = $request->estado;
         $documento->folio = $request->folio;
-/*         $documento->tdocumento_id = $request->tdocumento_id; */
-        $documento->cliente_id = $request->cliente_id;
-        $documento->save();
-
+        $documento->tdocumento_id ->$request->tdocumento_id;
+        $documento->cliente_id->$request->tdocumento_id;
+        $documento->update();
         return Redirect::route('Documentos.documentos.index');
     }
 

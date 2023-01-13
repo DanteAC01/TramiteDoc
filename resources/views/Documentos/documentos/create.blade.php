@@ -15,9 +15,9 @@
     {!! Form::text('estado', null, ['class'=>'form-control']) !!}
     <label for="">Folio</label>
     {!! Form::text('folio', null, ['class'=>'form-control']) !!}
-    <label for="">Tipo de documento</label>
+    <label for="">Tipo</label>
     {!! Form::select('tdocumento_id', $tdocumento, null, ['class'=>'form-control','id'=>'tdocumento_id']) !!}
-    <label for="">Cliente</label>
+    <label for="">Tipo</label>
     {!! Form::select('cliente_id', $cliente, null, ['class'=>'form-control','id'=>'cliente_id']) !!}
     <button type="submit">Guardar</button>
     {!! Form::close() !!}

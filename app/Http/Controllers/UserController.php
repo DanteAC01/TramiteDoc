@@ -29,9 +29,9 @@ class UserController extends Controller
     public function create()
     {
         //
-/*         $user = new User; */
+        $user = new User;
         $oficinas = Oficina::pluck('nombre','id')->toArray();
-        return view('Oficinas.usuarios.create', compact('oficinas'));
+        return view('Oficinas.usuarios.create', compact('user','oficinas'));
     }
 
     /**

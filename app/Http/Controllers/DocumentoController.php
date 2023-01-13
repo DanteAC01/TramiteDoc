@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Cliente;
 use App\Models\Documento;
+use App\Models\Tdocumento;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 
@@ -18,7 +19,7 @@ class DocumentoController extends Controller
     {
         //
         $documentos= Documento::all();
-        return view('Documentos.documentos.index', compact('documentos'));
+        return view('Documentos.documentos.index', compact('documentos',));
     }
 
     /**
@@ -30,7 +31,9 @@ class DocumentoController extends Controller
     {
         //
         $documento = new Documento;
-        return view('Documentos.documentos.create', compact('documento'));
+        $tdocumento = Tdocumento::pluck('nombre','id')->toArray();
+        $cliente = Cliente::pluck('nombre','id')->toArray();
+        return view('Documentos.documentos.create', compact('documento','tdocumento','cliente'));
     }
 
     /**
@@ -41,16 +44,18 @@ class DocumentoController extends Controller
      */
     public function store(Request $request)
     {
-        //
-        $documento= new Documento();
+ /*        dd($request->all()); */
+        $documento = new Documento;
         $documento->asunto = $request->asunto;
         $documento->estado = $request->estado;
         $documento->folio = $request->folio;
-/*         $documento->tdocumento_id = $request->tdocumento_id;
-        $documento->cliente_id = $request->cliente_id; */
+        $documento->tdocumento_id = $request->tdocumento_id;
+        $documento->cliente_id = $request->cliente_id;
         $documento->save();
-        return Redirect::route('Documentos.documentos.index');
+    
+        return redirect()->route('Documentos.documentos.index');
     }
+    
 
     /**
      * Display the specified resource.
@@ -90,8 +95,8 @@ class DocumentoController extends Controller
         $documento->asunto = $request->asunto;
         $documento->estado = $request->estado;
         $documento->folio = $request->folio;
-        /* $documento->tdocumento_id;
-        $documento->cliente_id;*/
+        $documento->tdocumento_id;
+        $documento->cliente_id;
         $documento->update();
         return Redirect::route('Documentos.documentos.index');
     }

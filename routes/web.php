@@ -5,6 +5,7 @@ use App\Http\Controllers\DocumentoController;
 use App\Http\Controllers\MovimientoController;
 use App\Http\Controllers\OficinaController;
 use App\Http\Controllers\TdocumentoController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -40,7 +41,7 @@ Route::resource('Documentos/tdocumentos', TdocumentoController::class)
 //rutas para oficinas
 Route::resource('Oficinas/oficinas', OficinaController::class)
 ->names('Oficinas.oficinas');
-Route::resource('Oficinas/usuarios', UsuarioController::class)
+Route::resource('Oficinas/usuarios', UserController::class)
 ->names('Oficinas.usuarios');
 Route::resource('Documentos/movimientos', MovimientoController::class)
 ->names('Documentos.movimientos');

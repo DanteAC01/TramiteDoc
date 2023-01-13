@@ -28,8 +28,8 @@
                     <td>{{ $documento->asunto }}</td>
                     <td>{{ $documento->estado }}</td>
                     <td>{{ $documento->folio }}</td>
-                    <td>{{ $documento->tdocumento_id }}</td>
-                    <td>{{ $documento->cliente }}</td>
+                    <td>{{ $documento->tdocumento->nombre }}</td>
+                    <td>{{ $documento->cliente->nombre }}</td>
                     <td>
                         <a href="{{ route('Documentos.documentos.edit',$documento->id) }}" class="btn btn-success btn-sm">
                             <i class="far fa-edit"></i>

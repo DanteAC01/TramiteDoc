@@ -14,7 +14,7 @@ class Documento extends Model
     public function movimientos(){
         return $this->hasMany(Movimiento::class);
     }
-    public function tdocumentos(){
+    public function tdocumento(){
         return $this->belongsTo(Tdocumento::class);
     }
 }

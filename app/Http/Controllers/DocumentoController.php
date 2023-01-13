@@ -19,7 +19,7 @@ class DocumentoController extends Controller
     {
         //
         $documentos= Documento::all();
-        return view('Documentos.documentos.index', compact('documentos'));
+        return view('Documentos.documentos.index', compact('documentos',));
     }
 
     /**
@@ -30,10 +30,12 @@ class DocumentoController extends Controller
     public function create()
     {
         //
+
         $documentos = Documento::all();
         $tdocumento = Tdocumento::pluck('nombre','id')->toArray();
         $cliente = Cliente::pluck('nombre','id')->toArray();
         return view('Documentos.documentos.create', compact('documentos','cliente','tdocumento'));
+
     }
 
     /**
@@ -53,8 +55,10 @@ class DocumentoController extends Controller
         $documento->tdocumento_id = $request-> tdocumento_id;
         $documento->cliente_id = $request->cliente_id;
         $documento->save();
-        return Redirect::route('Documentos.documentos.index');
+    
+        return redirect()->route('Documentos.documentos.index');
     }
+    
 
     /**
      * Display the specified resource.
@@ -100,6 +104,7 @@ class DocumentoController extends Controller
 /*         $documento->tdocumento_id = $request->tdocumento_id; */
         $documento->cliente_id = $request->cliente_id;
         $documento->save();
+
         return Redirect::route('Documentos.documentos.index');
     }
 

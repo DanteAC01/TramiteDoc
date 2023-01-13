@@ -29,9 +29,9 @@ class UserController extends Controller
     public function create()
     {
         //
-/*         $user = new User; */
-        $oficinas = Oficina::pluck('nombre','id')->toArray();
-        return view('Oficinas.usuarios.create', compact('oficinas'));
+        $user = new User;
+        $oficina = Oficina::pluck('nombre','id')->toArray();
+        return view('Oficinas.usuarios.create', compact('oficina','user'));
     }
 
     /**
@@ -43,10 +43,10 @@ class UserController extends Controller
     public function store(Request $request)
     {
         //
+/*         dd($request->all()); */
         $user= new User();
         $user->name = $request->name;
         $user->email = $request->email;
-        $user->password = $request->password;
         $user->oficina_id = $request->oficina_id;
         $user->save();
         return Redirect::route('Oficinas.usuarios.index');

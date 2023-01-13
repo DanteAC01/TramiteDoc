@@ -11,7 +11,7 @@
      <div class="card-body">
           {!! Form::open(['route'=>'Oficinas.oficinas.store','method'=>'post']) !!}
           @if (isset($oficina))
-          <input type="hidden" value="{{ $oficina->id }}" name="oficina_id">
+          <input type="hidden" value="{{ $oficina->idOficina }}" name="oficina_id">
           @endif
           <div class="col-sm-6 col-md-6 col-lg-6">
                <div class="form-group">

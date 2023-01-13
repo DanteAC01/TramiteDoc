@@ -29,7 +29,7 @@
     
 
     <td>{{ $user->id }}</td>
-   <td>{{ $user->nombre }}</td>
+   <td>{{ $user->name }}</td>
    <td>{{ $user->email }}</td>
    <td>{{ $user->password }}</td>
    <td style="text-align: center; width: 160px">
@@ -48,7 +48,7 @@
       </a>
     </td>
   </tr>
-  @include('<Oficinas.usuarios.modal')
+  @include('Oficinas.usuarios.modal')
   @endforeach
     <tbody>
     </tbody>

@@ -345,6 +345,10 @@ return [
                 ],
             ],
         ],
+        [
+            'text'  => 'Movimientos',
+            'route' => 'Movimientos.index'
+        ]
     ],
 
     /*

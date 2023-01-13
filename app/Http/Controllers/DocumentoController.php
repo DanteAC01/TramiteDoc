@@ -30,10 +30,12 @@ class DocumentoController extends Controller
     public function create()
     {
         //
-        $documento = new Documento;
+
+        $documentos = Documento::all();
         $tdocumento = Tdocumento::pluck('nombre','id')->toArray();
         $cliente = Cliente::pluck('nombre','id')->toArray();
-        return view('Documentos.documentos.create', compact('documento','tdocumento','cliente'));
+        return view('Documentos.documentos.create', compact('documentos','cliente','tdocumento'));
+
     }
 
     /**
@@ -44,12 +46,13 @@ class DocumentoController extends Controller
      */
     public function store(Request $request)
     {
- /*        dd($request->all()); */
-        $documento = new Documento;
+        //
+/*         dd($request->all()); */
+        $documento= new Documento();
         $documento->asunto = $request->asunto;
         $documento->estado = $request->estado;
         $documento->folio = $request->folio;
-        $documento->tdocumento_id = $request->tdocumento_id;
+        $documento->tdocumento_id = $request-> tdocumento_id;
         $documento->cliente_id = $request->cliente_id;
         $documento->save();
     
@@ -78,6 +81,9 @@ class DocumentoController extends Controller
     {
         //
         $documento = Documento::findOrFail($id);
+/*         $tdocumentos = Tdocumento::pluck('nombre')->toArray(); */
+        $cliente = Cliente::pluck('nombre')->toArray();
+
         return view('Documentos.documentos.edit', compact('documento'));
     }
 
@@ -91,13 +97,14 @@ class DocumentoController extends Controller
     public function update(Request $request, $id)
     {
         //
-        $documento = Documento::findOrFail($id);
+        $documento= new Documento();
         $documento->asunto = $request->asunto;
         $documento->estado = $request->estado;
         $documento->folio = $request->folio;
-        $documento->tdocumento_id;
-        $documento->cliente_id;
-        $documento->update();
+/*         $documento->tdocumento_id = $request->tdocumento_id; */
+        $documento->cliente_id = $request->cliente_id;
+        $documento->save();
+
         return Redirect::route('Documentos.documentos.index');
     }
 

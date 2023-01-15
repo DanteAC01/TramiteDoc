@@ -23,10 +23,12 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-
+Route::resource('Movimientos', MovimientoController::class)
+->names('Movimientos');
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
 
 //rutas para documentos
 Route::resource('Documentos/clientes', ClienteController::class)
@@ -44,5 +46,3 @@ Route::resource('Oficinas/oficinas', OficinaController::class)
 Route::resource('Oficinas/usuarios', UserController::class)
 ->names('Oficinas.usuarios');
 //ruta para movimientos
-Route::resource('Movimientos/', MovimientoController::class)
-->names('Movimientos');

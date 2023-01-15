@@ -10,7 +10,7 @@
    <h5>Documentos existentes</h5>
   </div>
      <div class="card-body">
-          {!! Form::model($documento,['route'=>['Documentos.documentos.update',$documento->id],'method'=>'PUT']) !!}
+          {!! Form::model($documento,['route'=>['Documentos.documentos.update',$documento->id],'method'=>'put']) !!}
           <div class="col-sm-6 col-md-6 col-lg-6">
                <div class="form-group">
                     {!! Form::label(null, 'asunto', [null]) !!}
@@ -19,6 +19,10 @@
                     {!! Form::text('estado', $documento->estado, ['class' => 'form-control']) !!}
                     {!! Form::label(null, 'folio', [null]) !!}
                     {!! Form::text('folio', $documento->folio, ['class' => 'form-control']) !!}
+                    <label for="">Tipo de documento</label>
+                    {!! Form::select('tdocumento_id', $tdocumento, null, ['class'=>'form-control','id'=>'tdocumento_id']) !!}
+                    <label for="">Cliente</label>
+                     {!! Form::select('cliente_id', $cliente, null, ['class'=>'form-control','id'=>'cliente_id']) !!}
                   </div>
           </div>
           <div class="card-footer">

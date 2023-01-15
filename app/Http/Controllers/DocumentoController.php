@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\Cliente;
 use App\Models\Tdocumento;
 use App\Models\Documento;
-use App\Models\Tdocumento;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 
@@ -80,9 +79,6 @@ class DocumentoController extends Controller
     {
         //
         $documento = Documento::findOrFail($id);
-/*         $tdocumentos = Tdocumento::pluck('nombre')->toArray(); */
-        $cliente = Cliente::pluck('nombre')->toArray();
-
         return view('Documentos.documentos.edit', compact('documento'));
     }
 
@@ -96,12 +92,12 @@ class DocumentoController extends Controller
     public function update(Request $request, $id)
     {
         //
-        $documento= new Documento();
+        $documento= Documento::findOrfail($id);
         $documento->asunto = $request->asunto;
         $documento->estado = $request->estado;
         $documento->folio = $request->folio;
-        $documento->tdocumento_id ->$request->tdocumento_id;
-        $documento->cliente_id->$request->tdocumento_id;
+        $documento->tdocumento_id = $request->tdocumento_id;
+        $documento->cliente_id = $request->cliente_id;
         $documento->update();
         return Redirect::route('Documentos.documentos.index');
     }

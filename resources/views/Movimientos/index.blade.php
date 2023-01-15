@@ -9,7 +9,9 @@
 @section('content')
     <p></p>
     <a href="{{ route('Movimientos.create') }}">
-        <button>Nuevo movimiento</button>
+        <button class='btn btn-primary'>
+            <i class='fas fa-folder-open'></i> Nuevo movimiento
+          </button>
     </a>
     <div class="card-body">
         <table class="table">
@@ -31,11 +33,17 @@
                         <td>{{ $movimiento->fecha}}</td>
                         <td>{{ $movimiento->hora }}</td>
                         <td>
-                            <a href="{{ route('Movimientos.edit',$movimiento->id) }}">
-                                <button>Editar movimiento</button>
+                            <a href="{{ route('Movimientos.edit',$movimiento->id) }}" class="btn btn-success btn-sm">
+                                <i class="far fa-edit"></i>
+                            </a>
+                        </td>
+                        <td>
+                            <a class="btn btn-danger btn-sm" data-toggle="modal" data-target="#modal-delete-{{ $movimiento->id }}">
+                              <i class="fas fa-trash-alt"></i>
                             </a>
                         </td>
                     </tr>
+                    @include('Movimientos.modal')
                 @endforeach
             </tbody>
         </table>

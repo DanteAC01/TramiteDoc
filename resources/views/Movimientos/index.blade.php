@@ -24,22 +24,20 @@
             </thead>
             <tbody>
                 @foreach ($movimientos as $movimiento )
-                <tr>
-                    <td>{{ $movimiento->documento->asunto }}</td>
-                    <td>{{ $movimiento->oficina_id }}</td>
-                    <td>{{ $movimiento->oficina_id }}</td>
-                    <td>{{ $movimiento->fecha}}</td>
-                    <td>{{ $movimiento->hora }}</td>
-                    <td>
-                        <a href="{{ route(' Movimientos.edit',$movimiento->id) }}" class="btn btn-success btn-sm">
-                            <i class="far fa-edit"></i>
-                        </a>
-                        </a>
-                    </td>
-                </tr>
+                    <tr>
+                        <td>{{ $movimiento->documento->asunto }}</td>
+                        <td>{{ $movimiento->oforigen_id}}</td>
+                        <td>{{ $movimiento->ofdestino_id}}</td>
+                        <td>{{ $movimiento->fecha}}</td>
+                        <td>{{ $movimiento->hora }}</td>
+                        <td>
+                            <a href="{{ route('Movimientos.edit',$movimiento->id) }}">
+                                <button>Editar movimiento</button>
+                            </a>
+                        </td>
+                    </tr>
                 @endforeach
             </tbody>
         </table>
     </div>
-
 @stop

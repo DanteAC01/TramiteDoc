@@ -61,6 +61,16 @@
                             </div>
                         </div>
 
+        {{-- No tengo ni idea de que estoy haciendo --}}
+                        {{-- <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label for="oficina_id" class="col-md-4 col-form-label text-md-end">{{ __('oficina_id') }}</label>
+                                {!! Form::select('oficina_id', null, ['class' => 'form-control','id'=>'oficina_id']) !!}
+                            <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('oficina_id') }}" required autocomplete="name" autofocus>
+                            </div>    
+                        </div> --}}
+
+
                         <div class="row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">

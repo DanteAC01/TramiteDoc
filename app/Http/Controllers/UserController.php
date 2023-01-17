@@ -47,6 +47,7 @@ class UserController extends Controller
         $user= new User();
         $user->name = $request->name;
         $user->email = $request->email;
+        $user->password = $request->password;
         $user->oficina_id = $request->oficina_id;
         $user->save();
         return Redirect::route('Oficinas.usuarios.index');
@@ -72,8 +73,9 @@ class UserController extends Controller
     public function edit($id)
     {
         //
-        $user = User::findOrFaild($id);
-        return view('Oficinas.usuarios.edit', compact('user'));
+        $user = User::findOrFail($id);
+        $oficina = Oficina::pluck('nombre','id')->toArray();
+        return view('Oficinas.usuarios.edit', compact('user','oficina'));
     }
 
     /**
@@ -86,7 +88,7 @@ class UserController extends Controller
     public function update(Request $request, $id)
     {
         //
-        $user = User::findOrFaild($id);
+        $user = User::findOrFail($id);
         $user->nombre;
         $user->email;
         $user->password;

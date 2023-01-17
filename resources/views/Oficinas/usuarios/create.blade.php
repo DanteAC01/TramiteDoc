@@ -17,6 +17,8 @@
                 {!! Form::text('name', $user->nombre, ['class' => 'form-control']) !!}
                 {!! Form::label(null, 'email', [null]) !!}
                 {!! Form::email('email', $user->email, ['class' => 'form-control']) !!}
+                {!! Form::label(null, 'password', [null]) !!}
+                {!! Form::password('password', ['class' => 'form-control', 'required' => 'required']) !!}
                 {!! Form::label(null, 'oficina', [null]) !!}
                 {!! Form::select('oficina_id', $oficina, null, ['class' => 'form-control','id'=>'oficina_id']) !!}
               </div>

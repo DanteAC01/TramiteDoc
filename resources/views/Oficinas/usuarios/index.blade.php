@@ -20,7 +20,8 @@
           <th>Id</th>
           <th>Nombre</th>
           <th>E-mail</th>
-          <th>password</th>
+          <th>Password</th>
+          <th>Oficina</th>
         </tr>
       </thead>
     <tbody>
@@ -32,9 +33,10 @@
    <td>{{ $user->name }}</td>
    <td>{{ $user->email }}</td>
    <td>{{ $user->password }}</td>
+   <td>{{ $user->oficina->nombre }}</td>
    <td style="text-align: center; width: 160px">
     <td>
-{{--       <a href="{{ route('Oficinas.usuarios.edit', $user->id) }}"> --}}
+      <a href="{{ route('Oficinas.usuarios.edit', $user->id) }}">
         <button class="btn btn-primary">
             <i class="far fa-edit"></i> Editar
         </button>

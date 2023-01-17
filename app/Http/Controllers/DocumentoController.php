@@ -79,7 +79,9 @@ class DocumentoController extends Controller
     {
         //
         $documento = Documento::findOrFail($id);
-        return view('Documentos.documentos.edit', compact('documento'));
+        $cliente = Cliente::pluck('nombre','id');
+        $tdocumento = Tdocumento::pluck('nombre','id');
+        return view('Documentos.documentos.edit', compact('documento','cliente','tdocumento'));
     }
 
     /**

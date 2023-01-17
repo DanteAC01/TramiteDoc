@@ -9,7 +9,9 @@
 @section('content')
     <p></p>
     <a href="{{ route('Documentos.documentos.create') }}">
-        <button>Nuevo Documento</button>
+        <button class='btn btn-primary'>
+            <i class='fas fa-folder-open'></i> Nuevo Documento
+          </button>
     </a>
     <div class="card-body">
         <table class="table">
@@ -34,9 +36,19 @@
                         <a href="{{ route('Documentos.documentos.edit',$documento->id) }}" class="btn btn-success btn-sm">
                             <i class="far fa-edit"></i>
                         </a>
+                    </td>
+                    <td>
+                        <a class="btn btn-danger btn-sm" data-toggle="modal" data-target="#modal-delete-{{ $documento->id }}">
+                          <i class="fas fa-trash-alt"></i>
+                        </a>
+                    </td>
+                    <td>
+                        <a href="{{ route('Movimientos.create',$documento->id) }}" class="btn btn-success btn-sm">
+                            <i class="far fa-edit">realizar movimiento con documento</i>
                         </a>
                     </td>
                 </tr>
+                @include('Documentos.documentos.modal')
                 @endforeach
             </tbody>
         </table>

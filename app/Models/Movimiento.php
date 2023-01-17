@@ -11,7 +11,7 @@ class Movimiento extends Model
     public function documento(){
         return $this->belongsTo(Documento::class);
     }
-    public function oficinas(){
-        return $this->hasMany(Oficina::class);
+    public function oficina(){
+        return $this->belongsTo(Oficina::class);
     }
 }

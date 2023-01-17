@@ -1,13 +1,12 @@
 @extends('adminlte::page')
 @section('title','Nuevo documento')
 @section('content_header')
-<h1>Nuevo de documento</h1>
+<h1>Editar documento</h1>
 @stop
 @section('content')
 <div class='row'>
   <div class="col-sm-12 col-md-12 col-lg-12">
   <div class="card">
-   <h5>Documentos existentes</h5>
   </div>
      <div class="card-body">
           {!! Form::model($documento,['route'=>['Documentos.documentos.update',$documento->id],'method'=>'put']) !!}
@@ -22,7 +21,7 @@
                     <label for="">Tipo de documento</label>
                     {!! Form::select('tdocumento_id', $tdocumento, null, ['class'=>'form-control','id'=>'tdocumento_id']) !!}
                     <label for="">Cliente</label>
-                     {!! Form::select('cliente_id', $cliente, null, ['class'=>'form-control','id'=>'cliente_id']) !!}
+                    {!! Form::select('cliente_id', $cliente, null, ['class'=>'form-control','id'=>'cliente_id']) !!}
                   </div>
           </div>
           <div class="card-footer">

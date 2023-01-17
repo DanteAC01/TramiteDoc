@@ -22,27 +22,27 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
-});
-Route::resource('Movimientos', MovimientoController::class)
-->names('Movimientos');
+})->middleware('auth');
+Route::resource('movimientos', MovimientoController::class)
+->names('movimientos');
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name ('home');
 
 
 //rutas para documentos
-Route::resource('Documentos/clientes', ClienteController::class)
-->names('Documentos.clientes');
-Route::resource('Documentos/documentos', DocumentoController::class)
-->names('Documentos.documentos');
-Route::resource('Documentos/tdocumentos', TdocumentoController::class)
-->names('Documentos.tdocumentos');
+Route::resource('documentos/clientes', ClienteController::class)
+->names('documentos.clientes');
+Route::resource('documentos/documentos', DocumentoController::class)
+->names('documentos.documentos');
+Route::resource('documentos/tdocumentos', TdocumentoController::class)
+->names('documentos.tdocumentos');
 
 
 
 //rutas para oficinas
-Route::resource('Oficinas/oficinas', OficinaController::class)
-->names('Oficinas.oficinas');
-Route::resource('Oficinas/usuarios', UserController::class)
-->names('Oficinas.usuarios');
+Route::resource('oficinas/oficinas', OficinaController::class)
+->names('oficinas.oficinas');
+Route::resource('oficinas/usuarios', UserController::class)
+->names('oficinas.usuarios');
 //ruta para movimientos
